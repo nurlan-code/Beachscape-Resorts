@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Beachscape Resorts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C5F7D;
+            --secondary-color: #FF7F50;
+            --accent-color: #20B2AA;
+            --gold-color: #D4AF37;
+            --text-dark: #1A1A1A;
+            --text-light: #6B7280;
+            --white: #FFFFFF;
+            --background-light: #F8FAFC;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --gradient-primary: linear-gradient(135deg, #2C5F7D 0%, #20B2AA 100%);
+            --gradient-secondary: linear-gradient(135deg, #FF7F50 0%, #D4AF37 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px var(--shadow-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 40px var(--shadow-medium);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .book-btn {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 95, 125, 0.3);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .page-header {
+            padding: 8rem 0 4rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .terms-content {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .terms-section {
+            margin-bottom: 4rem;
+        }
+
+        .terms-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .terms-section h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .terms-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .terms-section ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .terms-section li {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-color);
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            color: #9CA3AF;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9CA3AF;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(44, 95, 125, 0.5);
+        }
+
+        @media (max-width: 992px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 100px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 3rem;
+                transition: left 0.4s ease;
+                box-shadow: 0 10px 40px var(--shadow-medium);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .page-header h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .page-header {
+                padding: 6rem 0 3rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .terms-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .terms-section h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-umbrella-beach"></i>
+                Beachscape
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="book-btn">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Terms & Conditions</h1>
+            <p>Please read these terms and conditions carefully before making a reservation at Beachscape Resorts. By booking with us, you agree to these terms.</p>
+        </div>
+    </section>
+
+    <section class="terms-content">
+        <div class="container">
+            <div class="terms-section">
+                <h2>1. Reservation Terms</h2>
+                <h3>1.1 Booking Confirmation</h3>
+                <p>All reservations are subject to availability and confirmation. A valid credit card is required to secure your booking. You will receive a confirmation email with your reservation details upon successful booking.</p>
+                
+                <h3>1.2 Payment Terms</h3>
+                <p>Payment terms vary by room type and season:</p>
+                <ul>
+                    <li>Standard rooms: Full payment required at time of booking</li>
+                    <li>Suites and villas: 50% deposit required, balance due 30 days before arrival</li>
+                    <li>Peak season bookings: Full payment required 60 days before arrival</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Important:</strong> All prices are quoted in USD and include applicable taxes and service charges unless otherwise specified.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. Cancellation Policy</h2>
+                <h3>2.1 Standard Cancellation</h3>
+                <p>Free cancellation is available up to 48 hours before your scheduled arrival date. Cancellations made within 48 hours of arrival will be subject to a one-night room charge.</p>
+                
+                <h3>2.2 Peak Season Cancellation</h3>
+                <p>During peak season (December 15 - January 15, July 1 - August 31), cancellations must be made at least 7 days before arrival to avoid charges. Cancellations within 7 days will incur a 100% charge.</p>
+                
+                <h3>2.3 No-Show Policy</h3>
+                <p>Guests who fail to arrive on their scheduled check-in date without prior notice will be charged the full amount of their reservation.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. Check-in and Check-out</h2>
+                <h3>3.1 Check-in Times</h3>
+                <p>Check-in time is 3:00 PM. Early check-in requests are subject to availability and may incur additional charges. We will do our best to accommodate early arrivals when possible.</p>
+                
+                <h3>3.2 Check-out Times</h3>
+                <p>Check-out time is 12:00 PM. Late check-out requests are subject to availability and may incur additional charges. Late check-out after 6:00 PM will be charged at the full nightly rate.</p>
+                
+                <h3>3.3 Identification Requirements</h3>
+                <p>All guests must present valid government-issued photo identification upon check-in. International guests must present a valid passport.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Resort Policies</h2>
+                <h3>4.1 Age Requirements</h3>
+                <p>Guests must be at least 18 years old to make a reservation. Guests under 18 must be accompanied by an adult guardian.</p>
+                
+                <h3>4.2 Smoking Policy</h3>
+                <p>Beachscape Resorts is a non-smoking property. Smoking is prohibited in all indoor areas, including guest rooms, restaurants, and public spaces. Designated smoking areas are available outdoors.</p>
+                
+                <h3>4.3 Pet Policy</h3>
+                <p>Pets are not allowed on the resort property, with the exception of certified service animals. Service animals must be registered with the front desk upon arrival.</p>
+                
+                <h3>4.4 Dress Code</h3>
+                <p>Resort casual attire is appropriate throughout the property. Formal dining venues may require smart casual or formal attire. Swimwear is restricted to pool and beach areas only.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Activities and Services</h2>
+                <h3>5.1 Activity Bookings</h3>
+                <p>All activities and services are subject to availability and weather conditions. We recommend booking activities in advance to ensure availability.</p>
+                
+                <h3>5.2 Liability</h3>
+                <p>Guests participate in activities at their own risk. Beachscape Resorts is not liable for any injuries or damages that may occur during activities, except where negligence can be proven.</p>
+                
+                <h3>5.3 Equipment and Safety</h3>
+                <p>All safety equipment must be worn during water sports and adventure activities. Guests who refuse to wear required safety equipment will not be permitted to participate.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>6. Privacy and Data Protection</h2>
+                <h3>6.1 Personal Information</h3>
+                <p>We collect and process personal information in accordance with our Privacy Policy. By making a reservation, you consent to the collection and use of your personal information as described in our Privacy Policy.</p>
+                
+                <h3>6.2 Marketing Communications</h3>
+                <p>With your consent, we may send you marketing communications about our services and special offers. You can opt out of these communications at any time.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>7. Force Majeure</h2>
+                <p>Beachscape Resorts shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to natural disasters, government actions, war, terrorism, or other acts of God.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>8. Governing Law</h2>
+                <p>These terms and conditions are governed by the laws of the jurisdiction where Beachscape Resorts is located. Any disputes arising from these terms shall be resolved through binding arbitration.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>9. Modifications</h2>
+                <p>Beachscape Resorts reserves the right to modify these terms and conditions at any time. Updated terms will be posted on our website and will apply to all new reservations made after the effective date.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>10. Contact Information</h2>
+                <p>For questions about these terms and conditions, please contact us:</p>
+                <ul>
+                    <li>Email: legal@beachscape.com</li>
+                    <li>Phone: +994 12 345 67 89</li>
+                    <li>Address: Beachscape Premium Resort, Paradise Island, Crystal Bay</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Beachscape Resorts</h3>
+                    <p>The perfect blend of luxury and comfort in tropical paradise. With 15 years of experience, we provide world-class hospitality services.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="rooms.html"><i class="fas fa-bed"></i> Rooms</a></li>
+                        <li><a href="activities.html"><i class="fas fa-swimmer"></i> Activities</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="responsible.html"><i class="fas fa-leaf"></i> Responsible Tourism</a></li>
+                        <li><a href="contact.html"><i class="fas fa-calendar-check"></i> Online Booking</a></li>
+                        <li><a href="contact.html"><i class="fas fa-car"></i> Transfer Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><a href="tel:+994123456789"><i class="fas fa-phone"></i> +994 12 345 67 89</a></li>
+                        <li><a href="mailto:info@beachscape.com"><i class="fas fa-envelope"></i> info@beachscape.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Paradise Island, Crystal Bay</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24/7 Customer Service</a></li>
+                        <li><a href="#"><i class="fas fa-certificate"></i> Forbes 5-Star Resort</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Beachscape Premium Resorts. All rights reserved. | 
+                   <strong>Developed by:</strong> 
+                   <a href="mailto:nurlanmammadli2@gmail.com" style="color: var(--accent-color);">Nurlan Məmmədli</a> | 
+                   <a href="https://www.linkedin.com/in/nurlan-məmmədli-b6a55b308" target="_blank" style="color: var(--accent-color);">LinkedIn Profile</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        class NavigationController {
+            constructor() {
+                this.navbar = document.getElementById('navbar');
+                this.hamburger = document.getElementById('hamburger');
+                this.navMenu = document.getElementById('nav-menu');
+                this.backToTop = document.getElementById('backToTop');
+                
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateNavOnScroll();
+            }
+
+            setupEventListeners() {
+                this.hamburger.addEventListener('click', () => this.toggleMobileMenu());
+                
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => this.closeMobileMenu());
+                });
+
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            this.updateNavOnScroll();
+                            this.updateBackToTop();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+
+                this.backToTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            toggleMobileMenu() {
+                const isActive = this.navMenu.classList.contains('active');
+                
+                if (isActive) {
+                    this.closeMobileMenu();
+                } else {
+                    this.openMobileMenu();
+                }
+            }
+
+            openMobileMenu() {
+                this.navMenu.classList.add('active');
+                this.hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const spans = this.hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            }
+
+            closeMobileMenu() {
+                this.navMenu.classList.remove('active');
+                this.hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                const spans = this.hamburger.querySelectorAll('span');
+                spans.forEach(span => {
+                    span.style.transform = '';
+                    span.style.opacity = '';
+                });
+            }
+
+            updateNavOnScroll() {
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY > 100) {
+                    this.navbar.classList.add('scrolled');
+                } else {
+                    this.navbar.classList.remove('scrolled');
+                }
+            }
+
+            updateBackToTop() {
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY > 500) {
+                    this.backToTop.classList.add('show');
+                } else {
+                    this.backToTop.classList.remove('show');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new NavigationController();
+            
+            const currentYear = new Date().getFullYear();
+            document.querySelector('.footer-bottom p').innerHTML = 
+                document.querySelector('.footer-bottom p').innerHTML.replace('2025', currentYear);
+        });
+    </script>
+</body>
+</html>
