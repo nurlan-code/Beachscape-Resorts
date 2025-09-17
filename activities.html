@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities & Experiences - Beachscape Resorts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C5F7D;
+            --secondary-color: #FF7F50;
+            --accent-color: #20B2AA;
+            --gold-color: #D4AF37;
+            --text-dark: #1A1A1A;
+            --text-light: #6B7280;
+            --white: #FFFFFF;
+            --background-light: #F8FAFC;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --gradient-primary: linear-gradient(135deg, #2C5F7D 0%, #20B2AA 100%);
+            --gradient-secondary: linear-gradient(135deg, #FF7F50 0%, #D4AF37 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px var(--shadow-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 40px var(--shadow-medium);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .book-btn {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 95, 125, 0.3);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .page-header {
+            padding: 8rem 0 4rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .activities {
+            padding: 8rem 0;
+            background: var(--background-light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow-light);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px var(--shadow-medium);
+        }
+
+        .activity-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .activity-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .activity-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .activity-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .activity-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .activity-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .activity-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .spa-wellness {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .spa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .spa-card {
+            background: var(--background-light);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .spa-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px var(--shadow-medium);
+        }
+
+        .spa-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-secondary);
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .spa-card:hover .spa-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .spa-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .spa-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .water-sports {
+            padding: 8rem 0;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .water-sports::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><path d="M0,100 Q150,150 300,100 T600,100 T900,100 T1200,100 L1200,0 L0,0 Z" fill="%23ffffff" opacity="0.05"/></svg>') repeat-x;
+            animation: wave 20s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-100px); }
+        }
+
+        .water-sports .section-title,
+        .water-sports .section-subtitle {
+            color: white;
+        }
+
+        .water-sports .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .water-sports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .water-sport-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .water-sport-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .water-sport-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .water-sport-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .water-sport-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            color: #9CA3AF;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9CA3AF;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(44, 95, 125, 0.5);
+        }
+
+        @media (max-width: 992px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 100px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 3rem;
+                transition: left 0.4s ease;
+                box-shadow: 0 10px 40px var(--shadow-medium);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .activities-grid,
+            .spa-grid,
+            .water-sports-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .page-header h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .page-header {
+                padding: 6rem 0 3rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .activities-grid,
+            .spa-grid,
+            .water-sports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-card,
+            .spa-card {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .activity-card,
+            .spa-card {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-umbrella-beach"></i>
+                Beachscape
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="book-btn">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Activities & Experiences</h1>
+            <p>From adrenaline-pumping water sports to relaxing spa treatments, activities for every taste. Our professional instructors will help you create unforgettable memories.</p>
+        </div>
+    </section>
+
+    <section class="activities">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Adventure & Entertainment</p>
+                <h2 class="section-title">Unforgettable Experiences</h2>
+                <p class="section-description">Discover a world of adventure and relaxation with our curated activities designed to create lasting memories in paradise.</p>
+            </div>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">🏄‍♂️</div>
+                    <h3>Professional Surf School</h3>
+                    <p>Learn from world champion surf masters and conquer perfect waves in our professional surf school with certified instructors.</p>
+                    <div class="activity-details">
+                        <div class="activity-price">$120</div>
+                        <button class="activity-button" onclick="bookActivity('Professional Surf School', '$120')">Book Now</button>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🤿</div>
+                    <h3>PADI Diving Courses</h3>
+                    <p>Explore colorful coral reefs and tropical fish with international certification. Professional diving instructors guide you through underwater adventures.</p>
+                    <div class="activity-details">
+                        <div class="activity-price">$180</div>
+                        <button class="activity-button" onclick="bookActivity('PADI Diving Courses', '$180')">Book Now</button>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🚁</div>
+                    <h3>Helicopter Tours</h3>
+                    <p>Soar above the tropical island and witness breathtaking panoramic views from a bird's eye perspective with our luxury helicopter tours.</p>
+                    <div class="activity-details">
+                        <div class="activity-price">$350</div>
+                        <button class="activity-button" onclick="bookActivity('Helicopter Tours', '$350')">Book Now</button>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🎣</div>
+                    <h3>Deep Sea Fishing</h3>
+                    <p>Professional boats and equipment for catching marlin, tuna and other big game fish. Experienced captains guide your fishing adventure.</p>
+                    <div class="activity-details">
+                        <div class="activity-price">$250</div>
+                        <button class="activity-button" onclick="bookActivity('Deep Sea Fishing', '$250')">Book Now</button>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🧘‍♀️</div>
+                    <h3>Sunrise Yoga & Meditation</h3>
+                    <p>Professional yoga and mindfulness sessions on the beach at sunrise. Certified instructors guide you through peaceful morning practices.</p>
+                    <div class="activity-details">
+                        <div class="activity-price">$80</div>
+                        <button class="activity-button" onclick="bookActivity('Sunrise Yoga & Meditation', '$80')">Book Now</button>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">⛳</div>
+                    <h3>Championship Golf</h3>
+                    <p>18-hole championship course designed by Jack Nicklaus. PGA professional golf lessons and world-class facilities for golf enthusiasts.</p>
+                    <div class="activity-details">
+                        <div class="activity-price">$200</div>
+                        <button class="activity-button" onclick="bookActivity('Championship Golf', '$200')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="spa-wellness">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Relaxation & Wellness</p>
+                <h2 class="section-title">Spa & Wellness Center</h2>
+                <p class="section-description">Rejuvenate your mind, body, and soul with our world-class spa treatments and wellness programs in a tranquil tropical setting.</p>
+            </div>
+            <div class="spa-grid">
+                <div class="spa-card">
+                    <div class="spa-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Tropical Massage Therapy</h3>
+                    <p>Traditional and modern massage techniques using tropical plant oils and ancient healing methods for ultimate relaxation.</p>
+                </div>
+                <div class="spa-card">
+                    <div class="spa-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Herbal Wellness Treatments</h3>
+                    <p>Natural herbal treatments and aromatherapy sessions using locally sourced tropical herbs and essential oils.</p>
+                </div>
+                <div class="spa-card">
+                    <div class="spa-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Mineral Water Therapy</h3>
+                    <p>Healing mineral water treatments and hydrotherapy sessions in our state-of-the-art wellness center.</p>
+                </div>
+                <div class="spa-card">
+                    <div class="spa-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Couples Spa Packages</h3>
+                    <p>Romantic couples treatments in private spa suites with ocean views and champagne service for special moments.</p>
+                </div>
+                <div class="spa-card">
+                    <div class="spa-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness & Wellness</h3>
+                    <p>Personal training sessions, yoga classes, and wellness consultations with certified fitness professionals.</p>
+                </div>
+                <div class="spa-card">
+                    <div class="spa-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Luxury Spa Retreats</h3>
+                    <p>Multi-day wellness retreats combining spa treatments, healthy cuisine, and mindfulness practices for complete rejuvenation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="water-sports">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Ocean Adventures</p>
+                <h2 class="section-title">Water Sports Center</h2>
+                <p class="section-description">Dive into adventure with our comprehensive water sports program. Professional instructors and top-quality equipment ensure safe and exciting experiences.</p>
+            </div>
+            <div class="water-sports-grid">
+                <div class="water-sport-card">
+                    <div class="water-sport-icon">🏊‍♀️</div>
+                    <h3>Snorkeling Adventures</h3>
+                    <p>Explore vibrant coral reefs and tropical marine life with guided snorkeling tours in crystal-clear waters.</p>
+                </div>
+                <div class="water-sport-card">
+                    <div class="water-sport-icon">🚤</div>
+                    <h3>Jet Ski Tours</h3>
+                    <p>High-speed jet ski adventures around the island with professional guides and safety equipment included.</p>
+                </div>
+                <div class="water-sport-card">
+                    <div class="water-sport-icon">⛵</div>
+                    <h3>Sailing Excursions</h3>
+                    <p>Luxury yacht sailing trips with sunset cruises, champagne service, and gourmet dining experiences.</p>
+                </div>
+                <div class="water-sport-card">
+                    <div class="water-sport-icon">🏄‍♀️</div>
+                    <h3>Stand-Up Paddleboarding</h3>
+                    <p>Peaceful paddleboarding sessions in calm lagoons with instruction for beginners and advanced techniques.</p>
+                </div>
+                <div class="water-sport-card">
+                    <div class="water-sport-icon">🌊</div>
+                    <h3>Parasailing</h3>
+                    <p>Soar above the ocean with parasailing adventures offering spectacular views of the tropical coastline.</p>
+                </div>
+                <div class="water-sport-card">
+                    <div class="water-sport-icon">🦈</div>
+                    <h3>Shark & Ray Encounters</h3>
+                    <p>Safe and educational encounters with gentle sharks and rays in their natural habitat with marine biologists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Beachscape Resorts</h3>
+                    <p>The perfect blend of luxury and comfort in tropical paradise. With 15 years of experience, we provide world-class hospitality services.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="rooms.html"><i class="fas fa-bed"></i> Rooms</a></li>
+                        <li><a href="activities.html"><i class="fas fa-swimmer"></i> Activities</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="contact.html"><i class="fas fa-calendar-check"></i> Online Booking</a></li>
+                        <li><a href="activities.html"><i class="fas fa-spa"></i> Spa & Wellness</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> Restaurants</a></li>
+                        <li><a href="activities.html"><i class="fas fa-golf-ball"></i> Golf Course</a></li>
+                        <li><a href="activities.html"><i class="fas fa-water"></i> Water Sports</a></li>
+                        <li><a href="contact.html"><i class="fas fa-car"></i> Transfer Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><a href="tel:+994123456789"><i class="fas fa-phone"></i> +994 12 345 67 89</a></li>
+                        <li><a href="mailto:info@beachscape.com"><i class="fas fa-envelope"></i> info@beachscape.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Paradise Island, Crystal Bay</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24/7 Customer Service</a></li>
+                        <li><a href="#"><i class="fas fa-certificate"></i> Forbes 5-Star Resort</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Beachscape Premium Resorts. All rights reserved. | 
+                   <strong>Developed by:</strong> 
+                   <a href="mailto:nurlanmammadli2@gmail.com" style="color: var(--accent-color);">Nurlan Məmmədli</a> | 
+                   <a href="https://www.linkedin.com/in/nurlan-məmmədli-b6a55b308" target="_blank" style="color: var(--accent-color);">LinkedIn Profile</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        class NavigationController {
+            constructor() {
+                this.navbar = document.getElementById('navbar');
+                this.hamburger = document.getElementById('hamburger');
+                this.navMenu = document.getElementById('nav-menu');
+                this.backToTop = document.getElementById('backToTop');
+                
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateNavOnScroll();
+            }
+
+            setupEventListeners() {
+                this.hamburger.addEventListener('click', () => this.toggleMobileMenu());
+                
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => this.closeMobileMenu());
+                });
+
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            this.updateNavOnScroll();
+                            this.updateBackToTop();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+
+                this.backToTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            toggleMobileMenu() {
+                const isActive = this.navMenu.classList.contains('active');
+                
+                if (isActive) {
+                    this.closeMobileMenu();
+                } else {
+                    this.openMobileMenu();
+                }
+            }
+
+            openMobileMenu() {
+                this.navMenu.classList.add('active');
+                this.hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const spans = this.hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            }
+
+            closeMobileMenu() {
+                this.navMenu.classList.remove('active');
+                this.hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                const spans = this.hamburger.querySelectorAll('span');
+                spans.forEach(span => {
+                    span.style.transform = '';
+                    span.style.opacity = '';
+                });
+            }
+
+            updateNavOnScroll() {
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY > 100) {
+                    this.navbar.classList.add('scrolled');
+                } else {
+                    this.navbar.classList.remove('scrolled');
+                }
+            }
+
+            updateBackToTop() {
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY > 500) {
+                    this.backToTop.classList.add('show');
+                } else {
+                    this.backToTop.classList.remove('show');
+                }
+            }
+        }
+
+        function bookActivity(activityName, activityPrice) {
+            const modal = document.createElement('div');
+            modal.className = 'booking-modal';
+            modal.innerHTML = `
+                <div class="modal-overlay" style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.8);
+                    z-index: 10000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 2rem;
+                ">
+                    <div class="modal-content" style="
+                        background: white;
+                        border-radius: 20px;
+                        padding: 3rem;
+                        max-width: 500px;
+                        width: 100%;
+                        position: relative;
+                        animation: modalFadeIn 0.3s ease;
+                    ">
+                        <button class="modal-close" style="
+                            position: absolute;
+                            top: 1rem;
+                            right: 1rem;
+                            background: none;
+                            border: none;
+                            font-size: 1.5rem;
+                            cursor: pointer;
+                            color: #6B7280;
+                        ">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Activity Booking</h3>
+                        <p style="color: var(--text-light); margin-bottom: 2rem;">
+                            <strong>${activityName}</strong><br>
+                            <span style="color: var(--primary-color); font-size: 1.2rem;">${activityPrice} per person</span>
+                        </p>
+                        <div style="text-align: center;">
+                            <a href="contact.html" class="cta-primary" style="
+                                display: inline-block;
+                                margin-bottom: 1rem;
+                                text-decoration: none;
+                                background: var(--gradient-primary);
+                                color: white;
+                                padding: 1rem 2rem;
+                                border-radius: 50px;
+                                font-weight: 600;
+                            ">Book Activity</a>
+                            <br>
+                            <small style="color: var(--text-light);">or</small>
+                            <br><br>
+                            <a href="tel:+994123456789" style="
+                                color: var(--accent-color);
+                                text-decoration: none;
+                                font-weight: 600;
+                            ">
+                                <i class="fas fa-phone"></i> +994 12 345 67 89
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+            
+            modal.querySelector('.modal-close').addEventListener('click', () => closeModal(modal));
+            modal.querySelector('.modal-overlay').addEventListener('click', (e) => {
+                if (e.target === modal.querySelector('.modal-overlay')) {
+                    closeModal(modal);
+                }
+            });
+        }
+
+        function closeModal(modal) {
+            modal.style.animation = 'modalFadeOut 0.3s ease';
+            document.body.style.overflow = '';
+            setTimeout(() => modal.remove(), 300);
+        }
+
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes modalFadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
+            }
+            
+            @keyframes modalFadeOut {
+                from { opacity: 1; transform: scale(1); }
+                to { opacity: 0; transform: scale(0.9); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new NavigationController();
+            
+            const currentYear = new Date().getFullYear();
+            document.querySelector('.footer-bottom p').innerHTML = 
+                document.querySelector('.footer-bottom p').innerHTML.replace('2025', currentYear);
+        });
+    </script>
+</body>
+</html>
